@@ -1,0 +1,21 @@
+- hosts: web-server
+  tasks:
+    - yum:
+        name: nginx
+        state: latest 
+    - service:
+        name: nginx
+        state: started 
+    - file:  
+        path: /usr/share/nginx/html/index.html
+        state: absent 
+    - file:
+        path: /usr/share/nginx/html/index.html
+        state: touch 
+
+    - lineinfile: 
+        path: /usr/share/nginx/html/index.html
+        line: love u too
+    - package:
+        name: wget 
+        state: latest
